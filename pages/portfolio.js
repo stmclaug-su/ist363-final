@@ -9,7 +9,7 @@ export default function Portfolio() {
                 <meta name="description" content="a portfolio of web design"/>
             </Head>
             <h1>Portfolio</h1>
-            <p>Portfolio content goes here</p>
+            <p>You're lookin' at it!</p>
         </Layout>
     )
 }

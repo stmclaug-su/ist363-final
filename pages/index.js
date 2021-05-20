@@ -37,8 +37,8 @@ export default function Home() {
                 <Col>
                 <Image 
                         src="/images/page-location.jpg"
-                        width={1800}
-                        height={945}
+                        width={783}
+                        height={450}
                     />
                     <Heading type="h2">Locations</Heading >
                     <Button 

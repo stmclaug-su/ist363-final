@@ -26,6 +26,10 @@ export default function Header() {
         },
         exit: {
             x: "100%"
+        },
+        transition: {
+            type: "spring",
+            bounce: 0,
         }
     }
 
@@ -57,6 +61,7 @@ export default function Header() {
                                 animate={isMenuVisible ? 'open' : 'closed'}
                                 variants={variants}
                                 exit="exit"
+                                transition="transition"
                             >
                                 <NavOverlay
                                     closeClickHandler={() => {

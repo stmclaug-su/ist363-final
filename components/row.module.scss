@@ -9,4 +9,13 @@
     &.justify-content-space-between {
         justify-content: space-between;
     }
+    &.justify-content-space-around {
+        justify-content: space-around;
+    }
+    &.bt {
+        border-top: 1px solid #000;
+    }
+    &.bb {
+        border-bottom: 1px solid #000;
+    }
 }

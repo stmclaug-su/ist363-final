@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { AnimatePresence, motion } from "framer-motion"
+
 
 import ButtonUI from './buttonui'
 import styles from './navoverlay.module.scss'

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { getAllMenuItemSlugs, getMenuItemBySlug } from '../../lib/api'
 import Row from "../../components/row"
 import Col from "../../components/col"
+import Button from "../../components/button"
 
 
 export async function getStaticPaths() {
@@ -40,10 +41,11 @@ export async function getStaticProps({ params }) {
 
 export default function MenuItem({ menuItemData }) {
 
-    const { title, featuredImage, content } = menuItemData;
+    const { title, featuredImage, content, nutritionalInformation } = menuItemData;
 
     const { sourceUrl, mediaDetails, altText } = featuredImage.node;
     const { width, height } = mediaDetails;
+    const { nutritionalData } = nutritionalInformation;
 
 
     return (
@@ -63,7 +65,18 @@ export default function MenuItem({ menuItemData }) {
             />
             <h1>{title}</h1>
             <div dangerouslySetInnerHTML={{ __html: content }} />
-            
+            <Row justifyContentSpaceAround bt bb>
+                {nutritionalData.map((datum, index)=>{
+                    return <Col lg={4} md={4} sm={4} xs={4} key={index}>
+                                <label>{datum.property}</label> <h2>{datum.value}</h2>
+                        </Col>
+                })}
+            </Row>
+            <Row justifyContentCenter>
+                <Col>
+                    <Button label="Order Now" path="/menu" type="primary" />
+                </Col>
+            </Row>            
         </Layout>
     )
 } 
