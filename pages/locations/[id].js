@@ -1,9 +1,12 @@
 import Link from 'next/link'
 
+
 import Layout from '../../components/layout'
 import Card from '../../components/card'
 import Row from '../../components/row'
 import Col from '../../components/col'
+import Section from '../../components/section'
+import Heading from '../../components/heading'
 
 import { getAllLocationSlugs, getLocationBySlug } from '../../lib/api'
 
@@ -42,7 +45,9 @@ export async function getStaticProps({ params }) {
 // initialize the component
 export default function Location({ locationData }) {
 
-    const { streetAddress, city, state, zipCode, phoneNumber, } =locationData.locationInformation  
+    const { streetAddress, city, state, zipCode, phoneNumber, } =locationData.locationInformation;  
+    const { title, relatedPeople } = locationData;
+    
 
     return (
         <Layout>
@@ -52,6 +57,23 @@ export default function Location({ locationData }) {
                     <p>{streetAddress}</p>
                     <p>{city}, {state} {zipCode}</p>
                     <p>{phoneNumber}</p>
+                    <Section title="Available Menus:">
+
+                    </Section>
+                    <Section title={`${title}Team:`}>
+                        <Row justifyContentCenter>
+                        {relatedPeople.locationsPeople.map((person, index) => {
+                            const { personInformation } = person;
+                            const { emailAddress, jobTitle } = personInformation;                            
+                            
+                            return <Col md={3}> 
+                                    <Card node={person} dir="people"/> 
+                                    <p>{emailAddress}</p>
+                                    <Heading type="h4">{jobTitle}</Heading>                         
+                                </Col>
+                        })}
+                        </Row>
+                    </Section>
                     <Link href="/locations">Back to Locations</Link>
                 </Col>
             </Row>
@@ -60,9 +82,10 @@ export default function Location({ locationData }) {
 }
 
 /*TODO: 
-responsive grid
-map?
+responsive grid (what did i mean by this)
+map!
 menu items (grid)
-people (grid)
-
+ -get menu types for location
+    -get menu items for menu type
+      -build card for menu item
 */
