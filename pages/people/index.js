@@ -1,6 +1,8 @@
 import Layout from "../../components/layout";
 
 import Card from "../../components/card";
+import Row from "../../components/row";
+import Col from "../../components/col";
 
 import { getAllPeople } from "../../lib/api";
 import Container from "../../components/container";
@@ -19,10 +21,14 @@ export default function People({ people }) {
             <Container>
                 <h1>People</h1>
                 <section>
-                    {people.edges.map((edge, index) => {
-                        const { node } = edge;
-                        return <Card key={index} node={node} dir="people" />
-                    })}
+                    <Row justifyContentCenter>
+                        {people.edges.map((edge, index) => {
+                            const { node } = edge;
+                            return <Col sm={6} md={4} lg={3}>
+                                    <Card key={index} node={node} dir="people" />
+                                </Col>
+                        })}
+                    </Row>
                 </section>
             </Container>
         </Layout>

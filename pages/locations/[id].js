@@ -63,13 +63,15 @@ export default function Location({ locationData }) {
                         <Row justifyContentCenter>                                        
                                                                   
                             {menuTypes.nodes.map((node, index) => {
-                                return <Col>
-                                    <Section title={node.name}>
+                                return <Section title={node.name}>
+                                    <Row justifyContentCenter>
                                     {node.items.edges.map((edge, index) => {
-                                        return <Card node={edge.node} dir="menu" key={index} />                                        
+                                        return <Col sm={6} md={4} lg={3}>
+                                            <Card node={edge.node} dir="menu" key={index} /> </Col>                                        
                                     })}
+                                    </Row>
                                     </Section>
-                                </Col>                                    
+                                                                   
                             })}
                             
                         </Row>
